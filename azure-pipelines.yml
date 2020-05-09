@@ -33,7 +33,6 @@ jobs:
     displayName: 'Run a multi-line script'
 - job: Job02
   displayName: Job 02 to test depedency
-  dependsOn: Job01
   pool:
     vmImage: 'ubuntu-latest'
   steps:
