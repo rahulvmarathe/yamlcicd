@@ -10,7 +10,6 @@ jobs:
 - job: Job01
   displayName: Job 01 runs on ubuntu Linux
   pool:
-    name: Unbut VM
     vmImage: 'ubuntu-latest'
   steps:
   - script: echo Hello, world!
