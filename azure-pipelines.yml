@@ -31,3 +31,10 @@ jobs:
       echo Add other tasks to build, test, and deploy your project.
       echo See https://aka.ms/yaml
     displayName: 'Run a multi-line script'
+- job: Job02
+  displayName: Job 02 to test depedency
+  dependsOn: Job01
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+    - script: echo Hello, Job 02
