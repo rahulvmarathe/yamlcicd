@@ -6,35 +6,38 @@
 trigger:
 - master
 
-jobs:
-- job: Job01
-  displayName: Job 01 runs on ubuntu Linux
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - script: echo Hello, world!
-    displayName: 'Run a one-line script'
+stages:
+- stage: dev
+  displayName: Dev envrionment
+  jobs:
+  - job: Job01
+    displayName: Job 01 runs on ubuntu Linux
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
 
-  - task: CopyFiles@2
-    inputs:
-      sourceFolder: '$(Build.SourcesDirectory)'
-      contents: '**'
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)'
+        contents: '**'
+        targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'drop'
-      publishLocation: 'Container'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
-  - script: |
-      echo Add other tasks to build, test, and deploy your project.
-      echo See https://aka.ms/yaml
-    displayName: 'Run a multi-line script'
-- job: Job02
-  dependsOn: Job01
-  displayName: Job 02 to test depedency
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-    - script: echo Hello, Job 02
+    - script: |
+        echo Add other tasks to build, test, and deploy your project.
+        echo See https://aka.ms/yaml
+      displayName: 'Run a multi-line script'
+  - job: Job02
+    dependsOn: Job01
+    displayName: Job 02 to test depedency
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: echo Hello, Job 02
