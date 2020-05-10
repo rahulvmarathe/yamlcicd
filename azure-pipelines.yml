@@ -35,9 +35,11 @@ stages:
         echo See https://aka.ms/yaml
       displayName: 'Run a multi-line script'
   - job: Job02
+    variables:
+      serviceConnectionDEV: 'azureSubscription'
     dependsOn: Job01
     displayName: Job 02 to test depedency
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-      - script: echo Hello, Job 02
+      - script: echo Hello, Job 02 $(serviceConnectionDEV)
