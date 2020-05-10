@@ -62,14 +62,10 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: AzureResourceManagerTemplateDeployment@3
+          - task: AzureResourceGroupDeployment@2
+            displayName: 'Azure Deployment:Create Or Update Resource Group action on TaskList'
             inputs:
-              deploymentScope: 'Resource Group'
-              azureResourceManagerConnection: 'Microsoft Azure Internal Consumption(f2de2f04-15eb-4eaa-ae36-29f88195f2f2)'
-              subscriptionId: 'f2de2f04-15eb-4eaa-ae36-29f88195f2f2'
-              action: 'Create Or Update Resource Group'
-              resourceGroupName: 'TaskList'
+              azureSubscription: 'Microsoft Azure Internal Consumption(f2de2f04-15eb-4eaa-ae36-29f88195f2f2)'
+              resourceGroupName: TaskList
               location: 'East US 2'
-              templateLocation: 'Linked artifact'
-              deploymentMode: 'Incremental'
               csmFile: '$(System.DefaultWorkingDirectory)/_rahulvmarathe.yamlcicd/drop/appservice.json'
