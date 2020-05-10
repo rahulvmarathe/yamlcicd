@@ -87,4 +87,4 @@ stages:
               azureSubscription: 'Microsoft Azure Internal Consumption(f2de2f04-15eb-4eaa-ae36-29f88195f2f2)'
               resourceGroupName: TaskList
               location: 'East US 2'
-              csmFile: '$(System.DefaultWorkingDirectory)/_rahulvmarathe.yamlcicd/drop/appservice.json'
+              csmFile: '${System.ArtifactsDirectory}/drop/appservice.json'
