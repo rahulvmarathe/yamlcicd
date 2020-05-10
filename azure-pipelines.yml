@@ -72,4 +72,4 @@ stages:
               location: 'East US 2'
               templateLocation: 'Linked artifact'
               deploymentMode: 'Incremental'
-              csmFile: 'appservice.json'
+              csmFile: ${System.ArtifactsDirectory}/appservice.json
