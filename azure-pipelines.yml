@@ -84,7 +84,7 @@ stages:
           - task: AzureResourceGroupDeployment@2
             displayName: 'Azure Deployment:Create Or Update Resource Group action on TaskList'
             inputs:
-              azureSubscription: 'Microsoft Azure Internal Consumption(f2de2f04-15eb-4eaa-ae36-29f88195f2f2)'
+              azureSubscription: $(resourceManagerConnection)
               resourceGroupName: TaskList
               location: 'East US 2'
               csmFile: '/home/vsts/work/1/a/drop/appservice.json'
