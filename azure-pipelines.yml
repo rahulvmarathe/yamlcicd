@@ -72,4 +72,4 @@ stages:
               location: 'East US 2'
               templateLocation: 'Linked artifact'
               deploymentMode: 'Incremental'
-              csmFile: '/home/vsts/work/1/s/appservice.json'
+              csmFile: '$(System.DefaultWorkingDirectory)/_rahulvmarathe.yamlcicd/drop/appservice.json'
