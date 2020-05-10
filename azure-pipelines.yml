@@ -43,3 +43,24 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
       - script: echo Hello, Job 02 $(serviceConnectionDEV)
+  - deployment: Job03
+    displayName: deploy azure resource group
+    variables:
+      resourceManagerConnection: 'Microsoft Azure Internal Consumption(f2de2f04-15eb-4eaa-ae36-29f88195f2f2)'
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureResourceManagerTemplateDeployment@3
+            inputs:
+              deploymentScope: 'Resource Group'
+              azureResourceManagerConnection: 'Microsoft Azure Internal Consumption(f2de2f04-15eb-4eaa-ae36-29f88195f2f2)'
+              subscriptionId: 'f2de2f04-15eb-4eaa-ae36-29f88195f2f2'
+              action: 'Create Or Update Resource Group'
+              resourceGroupName: 'TaskList'
+              location: 'East US 2'
+              templateLocation: 'Linked artifact'
+              deploymentMode: 'Incremental'
+              csmFile: 'appservice.json'
