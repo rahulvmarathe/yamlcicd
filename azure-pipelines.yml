@@ -6,6 +6,9 @@
 trigger:
 - master
 
+parameters:
+  - name: parameterConnection
+
 stages:
 - stage: dev
   displayName: Dev envrionment
@@ -84,7 +87,7 @@ stages:
           - task: AzureResourceGroupDeployment@2
             displayName: 'Azure Deployment:Create Or Update Resource Group action on TaskList'
             inputs:
-              azureSubscription: $(ServiceConnectionDEV)
+              azureSubscription: ${{parameters.parameterConnection}}
               resourceGroupName: TaskList
               location: 'East US 2'
               csmFile: '/home/vsts/work/1/a/drop/appservice.json'
