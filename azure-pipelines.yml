@@ -9,5 +9,6 @@ trigger:
 extends:
   template: basetemplate.json
   parameters:
+    buildSteps: 'buildsteps.json'
     steps: 'steps.json'
     
