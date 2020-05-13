@@ -7,7 +7,7 @@ trigger:
 - master
 
 extends:
-  template: baseteamplate.json
+  template: basetemplate.json
   parameters:
     steps: 'steps.json'
     
