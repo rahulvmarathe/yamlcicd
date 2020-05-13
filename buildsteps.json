@@ -1,12 +1,12 @@
 steps:
 - task: CopyFiles@2
-inputs:
-sourceFolder: '$(Build.SourcesDirectory)'
-contents: '**'
-targetFolder: '$(Build.ArtifactStagingDirectory)'
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
-inputs:
-PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-ArtifactName: 'drop'
-publishLocation: 'Container'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
