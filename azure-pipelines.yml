@@ -6,9 +6,6 @@
 trigger:
 - master
 
-parameters:
-  - name: parameterConnection
-
 stages:
 - stage: dev
   displayName: Dev envrionment
@@ -68,4 +65,4 @@ stages:
           steps:
           - template: steps.json
             parameters:
-              parameterConnection01: ${{parameters.parameterConnection}}
+              parameterConnection01: 'AzureDevConnection'
