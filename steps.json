@@ -1,5 +1,5 @@
 parameters:
-- name: parameterConnection01
+- name: azureServiceConnection
 steps:
 - download: none
 - task: DownloadBuildArtifacts@0
@@ -22,7 +22,7 @@ steps:
 - task: AzureResourceGroupDeployment@2
   displayName: 'Azure Deployment:Create Or Update Resource Group action on TaskList'
   inputs:
-    azureSubscription: ${{parameters.parameterConnection01}}
+    azureSubscription: ${{parameters.azureServiceConnection}}
     resourceGroupName: TaskList
     location: 'East US 2'
     csmFile: '/home/vsts/work/1/a/drop/appservice.json'
