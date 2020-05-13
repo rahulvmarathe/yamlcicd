@@ -10,53 +10,9 @@ stages:
 - stage: dev
   displayName: Dev envrionment
   jobs:
-  - job: Job01
-    displayName: Job 01 runs on ubuntu Linux
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script'
-
-    - task: CopyFiles@2
-      inputs:
-        sourceFolder: '$(Build.SourcesDirectory)'
-        contents: '**'
-        targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
-    - script: |
-        echo Add other tasks to build, test, and deploy your project.
-        echo See https://aka.ms/yaml
-        echo $(System.ArtifactsDirectory)
-      displayName: 'Run a multi-line script'
-    - task: PowerShell@2
-      inputs:
-        targetType: 'inline'
-        script: |
-          # Write your PowerShell commands here.
-          Write-Host "Hello World"
-          Write-Host ${System.ArtifactsDirectory}
-          Get-ChildItem -Path ${System.ArtifactsDirectory}
-  - job: Job02
-    variables:
-      serviceConnectionDEV: 'azureSubscription'
-    dependsOn: Job01
-    displayName: Job 02 to test depedency
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - script: echo Hello, Job 02 $(serviceConnectionDEV)
-  - deployment: Job03
+  - deployment: Job01
     displayName: deploy azure resource group
     environment: 'dev'
-    dependsOn: Job02
-    variables:
-      resourceManagerConnection: 'Microsoft Azure Internal Consumption(f2de2f04-15eb-4eaa-ae36-29f88195f2f2)'
     pool:
       vmImage: 'Ubuntu-16.04'
     strategy:
