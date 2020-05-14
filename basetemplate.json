@@ -24,4 +24,4 @@ stages:
           steps:
           - template: ${{parameters.steps}}
             parameters:
-              azureServiceConnection: 'AzureDevConnection'
+              azureServiceConnection: 'Azure Stage'
