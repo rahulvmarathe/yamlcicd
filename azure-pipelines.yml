@@ -7,7 +7,7 @@ trigger:
 - master
 
 extends:
-  template: 'https://github.com/rahulvmarathe/yamlcicdcore/blob/master/basetemplate.json'
+  template: basetemplate.json
   parameters:
     buildSteps: 'buildsteps.json'
     steps: 'steps.json'
