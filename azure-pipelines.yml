@@ -6,6 +6,10 @@
 trigger:
 - master
 
+resources:
+  pipelines:
+  - pipeline: ci-pipeline
+
 extends:
   template: basetemplate.json
   parameters:
